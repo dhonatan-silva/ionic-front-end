@@ -29,7 +29,13 @@ cliente: ClienteDTO;
        this.cliente = response;
        this.getImageIfexist();
      },
-     error =>{});
+     error =>{
+       if (error.status == 403) {
+        this.navCtrl.setRoot('Homepage');
+       }
+     });
+   } else {
+    this.navCtrl.setRoot('Homepage');
    }
   }
 
