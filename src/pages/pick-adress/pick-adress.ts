@@ -1,3 +1,5 @@
+import { CartService } from './../../services/domain/cart.service';
+import { PedidoDTO } from './../../models/pedido-dto';
 import { StorageService } from './../../services/storage.service';
 import { EnderecoDTO } from './../../models/endereco.dto';
 import { Component } from '@angular/core';
@@ -13,11 +15,14 @@ export class PickAdressPage {
 
   items: EnderecoDTO[];
 
+  pedido: PedidoDTO;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public storage: StorageService,
-    public clienteService: ClienteService
+    public clienteService: ClienteService,
+    public cartService: CartService
     ) {
   }
 
@@ -27,6 +32,15 @@ export class PickAdressPage {
      this.clienteService.findByEmail(localUser.email)
      .subscribe(response => {
        this.items = response['enderecos'];
+
+      let cart = this.cartService.getCart();
+
+       this.pedido = {
+         cliente: {id: response['id']},
+         enderecoDeEntrega: null,
+         pagamento: null,
+         items: cart.items.map(x => {return {quantidade: x.quantidade, produto:{id: x.produto.id}}})
+       }
      },
      error =>{
        if (error.status == 403) {
@@ -36,8 +50,11 @@ export class PickAdressPage {
    } else {
     this.navCtrl.setRoot('Homepage');
    }
+  }
 
-
+  nextPage(item: EnderecoDTO){
+    this.pedido.enderecoDeEntrega = {id: item.id};
+    console.log(this.pedido);
   }
 
 }
