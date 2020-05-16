@@ -3,7 +3,7 @@ import { Observable } from "rxjs/Observable";
 import { Injectable } from "@angular/core";
 import 'rxjs/add/operator/catch';
 import { StorageService } from "../services/storage.service";
-import { AlertController } from "ionic-angular/umd";
+import { AlertController } from "ionic-angular";
 import { FieldMessage } from "../models/field.message";
 
 @Injectable()

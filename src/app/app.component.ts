@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular/umd';
+import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../services/auth.service';
@@ -24,9 +24,9 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Profile', component: 'ProfilePage' },
-      { title: 'Categorias', component: 'CategoriaPage' },
-      {title: 'Carrinho', component: 'Cartpage'},
-      {title: 'Logout', component: ''}
+      { title: 'Categorias', component: 'CategoriasPage' },
+      { title: 'Carrinho', component: 'CartPage'},
+      { title: 'Logout', component: ''}
 
     ];
 
