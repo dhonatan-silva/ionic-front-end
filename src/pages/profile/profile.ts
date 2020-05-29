@@ -70,7 +70,7 @@ export class ProfilePage {
       this.cameraOn = false;
     },
     (error) => {
-      
+      this.cameraOn = false;
     });
   }
 
@@ -89,7 +89,7 @@ export class ProfilePage {
       this.cameraOn = false;
     },
     (error) => {
-      
+      this.cameraOn = false;
     });
   }
 
